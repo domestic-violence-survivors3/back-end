@@ -5,6 +5,7 @@ const appConfig = require("./api/config/appConfig");
 
 const indexRouter = require("./bin");
 const authRouter = require("./api/auth/auth-router");
+const personalRouter = require("./api/routes/personalBudget-routes");
 
 const app = express();
 appConfig(app);
@@ -12,6 +13,7 @@ appConfig(app);
 // routers
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
+app.use("/personal", personalRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
