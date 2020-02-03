@@ -1,5 +1,3 @@
-# back-end
-
 ### BaseURL: https://dvscalculator.herokuapp.com/
 
 ---
@@ -12,10 +10,10 @@
 POST /auth/register
 ```
 
-| name     | type   | description               |     |     |
-| -------- | ------ | ------------------------- | --- | --- |
-| username | string | users name \*required     |     |     |
-| password | string | users password \*required |     |     |
+| name     | type   | description               |
+| -------- | ------ | ------------------------- |
+| username | string | users name \*required     |
+| password | string | users password \*required |
 
 ### response
 
@@ -33,10 +31,10 @@ POST /auth/register
 POST /auth/login
 ```
 
-| name     | type   | description               |     |     |
-| -------- | ------ | ------------------------- | --- | --- |
-| username | string | users name \*required     |     |     |
-| password | string | users password \*required |     |     |
+| name     | type   | description               |
+| -------- | ------ | ------------------------- |
+| username | string | users name \*required     |
+| password | string | users password \*required |
 
 ### response
 
