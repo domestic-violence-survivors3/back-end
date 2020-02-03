@@ -7,11 +7,9 @@ module.exports = function(user) {
     password: user.password
   };
 
-  const secret = process.env.JWT_SECRET || "is it secret, is it safe?";
-
   const options = {
     expiresIn: "5d"
   };
 
-  return jwt.sign(payload, secret, options);
+  return jwt.sign(payload, process.env.JWT_SECRET, options);
 };
