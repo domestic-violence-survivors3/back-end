@@ -28,20 +28,50 @@ router.post("/:id/relocate", (req, res) => {
     });
 });
 
-router.put("/:id/relocate", (req, res) => {
-  const { id } = req.params;
-  const { body } = req;
+router.put("/:userId/relocate/:budgetId", (req, res) => {
+  const { userId } = req.params;
+  const { budgetId } = req.params;
+  const changes = { ...req.body, user_id: userId };
 
-  Relocate.update(body, id).then(data => {
-    res.status(200).json({ data });
+  Relocate.findById(budgetId).then(budget => {
+    if (budget) {
+      Relocate.updateById(changes, budgetId)
+        .then(updatedBudget => {
+          res.status(200).json({
+            updatedBudget,
+            message: `User Id: ${userId} - Relocation Budget id: ${budgetId} successfully updated`
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      console.log("nothing");
+    }
   });
 });
 
-router.delete("/:id/relocate", (req, res) => {
-  const { id } = req.params;
+router.delete("/:userId/relocate/:budgetId", (req, res) => {
+  const { userId } = req.params;
+  const { budgetId } = req.params;
 
-  Relocate.remove(id).then(deleted => {
-    res.status(200).json({ deleted });
+  Relocate.findByUserId(userId).then(budget => {
+    if (budget > 0) {
+      Relocate.remove(budgetId)
+        .then(updatedBudget => {
+          res.status(200).json({
+            updatedBudget,
+            message: `User Id: ${userId} - Relocation Budget id: ${budgetId} successfully removed`
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      res.status(404).json({
+        message: `User Id: ${userId} - Relocation Budget id: ${budgetId} does not exist`
+      });
+    }
   });
 });
 
