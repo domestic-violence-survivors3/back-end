@@ -10,7 +10,14 @@ exports.up = function(knex) {
     tbl.integer("carLoans", 5);
     tbl.integer("personalLoans", 5);
     tbl.integer("other", 5);
-    tbl.integer("user_id", 10);
+    tbl
+      .integer("user_id")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("users")
+      .onDelete("RESTRICT")
+      .onUpdate("CASCADE");
   });
 };
 

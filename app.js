@@ -5,7 +5,9 @@ const appConfig = require("./api/config/appConfig");
 
 const indexRouter = require("./bin");
 const authRouter = require("./api/auth/auth-router");
-const personalRouter = require("./api/routes/personalBudget-routes");
+const usersRouter = require("./api/users/users-router");
+const personalRouter = require("./api/personalBudget/personalBudget.router");
+const relocateRouter = require("./api/relocateBudget/relocateBudget.router");
 
 const app = express();
 appConfig(app);
@@ -13,7 +15,9 @@ appConfig(app);
 // routers
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
-app.use("/personal", personalRouter);
+app.use("/users", usersRouter);
+app.use("/users", relocateRouter);
+app.use("/users", personalRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
