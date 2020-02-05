@@ -4,6 +4,7 @@ module.exports = {
   findById,
   findByUserId,
   add,
+  // updateById,
   update,
   remove
 };
@@ -34,20 +35,18 @@ function add(budget, userId) {
     });
 }
 
-// FIXME:
-function update(changes) {
-  return db("personalBudget as pb")
-    .update({ changes })
-    .then(ids => {
-      const id = ids[0];
+// function updateById(changes, id) {
+//   return db("personalBudget")
+//     .where({ id })
+//     .update(changes)
+//     .then(findById(id));
+// }
 
-      return db("personalBudget")
-        .where({ id })
-        .first()
-        .then(budgets => {
-          return budgets;
-        });
-    });
+function update(changes, id) {
+  return db("personalBudget")
+    .where({ user_id: id })
+    .update(changes)
+    .then(findById(id));
 }
 
 // FIXME:

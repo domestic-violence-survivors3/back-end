@@ -3,6 +3,7 @@ const Personal = require("./personalBudget.model");
 
 router.get("/:id/personal", (req, res) => {
   const { id } = req.params;
+  console.log(req);
 
   Personal.findByUserId(id)
     .then(personalBudget => {
@@ -28,20 +29,50 @@ router.post("/:id/personal", (req, res) => {
     });
 });
 
-router.put("/:id/personal", (req, res) => {
-  const { id } = req.params;
-  const { body } = req;
+router.put("/:userId/personal/:budgetId", (req, res) => {
+  const { userId } = req.params;
+  const { budgetId } = req.params;
+  const changes = { ...req.body, user_id: userId };
 
-  Personal.update(body, id).then(data => {
-    res.status(200).json({ data });
+  Personal.findById(budgetId).then(budget => {
+    if (budget) {
+      Personal.updateById(changes, budgetId)
+        .then(updatedBudget => {
+          res.status(200).json({
+            updatedBudget,
+            message: `User Id: ${userId} - Personal Budget id: ${budgetId} successfully updated`
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      console.log("nothing");
+    }
   });
 });
 
-router.delete("/:id/personal", (req, res) => {
-  const { id } = req.params;
+router.delete("/:userId/personal/:budgetId", (req, res) => {
+  const { userId } = req.params;
+  const { budgetId } = req.params;
 
-  Personal.remove(id).then(deleted => {
-    res.status(200).json({ deleted });
+  Personal.findByUserId(userId).then(budget => {
+    if (budget > 0) {
+      Personal.remove(budgetId)
+        .then(updatedBudget => {
+          res.status(200).json({
+            updatedBudget,
+            message: `User Id: ${userId} - Personal Budget id: ${budgetId} successfully removed`
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      res.status(404).json({
+        message: `User Id: ${userId} - Personal Budget id: ${budgetId} does not exist`
+      });
+    }
   });
 });
 
