@@ -3,7 +3,7 @@ exports.up = function(knex) {
     tbl.increments();
 
     tbl.integer("hotelCosts", 5);
-    tbl.integer("rentlaDeposit", 5);
+    tbl.integer("rentalDeposit", 5);
     tbl.integer("utilities", 5);
     tbl.integer("storage", 5);
     tbl.integer("rent", 5);
@@ -14,7 +14,14 @@ exports.up = function(knex) {
     tbl.integer("mentalHealth", 5);
     tbl.integer("incomeLoss", 5);
     tbl.integer("other", 5);
-    tbl.integer("user_id", 5);
+    tbl
+      .integer("user_id")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("users")
+      .onDelete("RESTRICT")
+      .onUpdate("CASCADE");
   });
 };
 
