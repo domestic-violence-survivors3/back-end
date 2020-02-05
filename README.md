@@ -101,6 +101,7 @@ GET /users/:id
 ```
 GET /users/:id/personal
 ```
+### Response
 
 ```
 {
@@ -147,6 +148,7 @@ POST /users/:id/personal
 ```
 GET /users/:id/relocate
 ```
+### Response
 
 ```
 {
