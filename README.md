@@ -1,21 +1,26 @@
 ### BaseURL: https://dvscalculator.herokuapp.com/
 
+# **Table of Contents**
+1)  Authentication
+2)  User Endpoints
+3)  Personal Budget Endpoints
+4)  Relocation Budget Endpoints
 ---
 
-# **Authentication**
+# **1 - Authentication**
 
-## Register User
-
-```
-POST /auth/register
-```
+> Register User
 
 | name     | type   | description                 |
 | -------- | ------ | -------------------------   |
 | username | string | user's name      \*required |
 | password | string | user's password  \*required |
 
-### response
+```
+POST /auth/register
+```
+
+> Response
 
 ```
 {
@@ -25,18 +30,19 @@ POST /auth/register
 
 ---
 
-## Login User
+> Login User
 
-```
-POST /auth/login
-```
 
 | name     | type   | description                |
 | -------- | ------ | -------------------------  |
 | username | string | user's name \*required     |
 | password | string | user's password \*required |
 
-### response
+```
+POST /auth/login
+```
+
+> Response
 
 ```
 {
@@ -46,8 +52,10 @@ POST /auth/login
 
 ```
 
+# **2 - Users**
 
-# **Users**
+> Retrieve the User by the user id and return the user and the personal budget(s) and relocation budget(s) assigned to that user.
+
 ```
 GET /users/:id
 ```
@@ -95,9 +103,12 @@ GET /users/:id
 }
 ```
 
-# **Personal Budget**
+# **3 - Personal Budget**
 
-## GET personalBudget by ID
+
+
+> Retrieve the personal budget(s) by the user id.
+
 ```
 GET /users/:id/personal
 ```
@@ -142,7 +153,7 @@ POST /users/:id/personal
 | other           | integer | Other costs to include    |
 | user_id         | integer | included from req.params  |
 
-# **Relocation Budget**
+# **4 - Relocation Budget**
 
 ## GET relocateBudget by ID
 ```

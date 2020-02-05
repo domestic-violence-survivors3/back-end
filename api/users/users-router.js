@@ -9,8 +9,6 @@ router.get("/:id", (req, res) => {
   Users.findById(id)
     .then(user => {
       if (user) {
-        console.log("line 12", user);
-
         Personal.findByUserId(id)
           .then(personalBudget => {
             Relocate.findByUserId(id)
