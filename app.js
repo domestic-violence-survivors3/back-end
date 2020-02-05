@@ -3,6 +3,7 @@ const express = require("express");
 const createError = require("http-errors");
 const appConfig = require("./api/config/appConfig");
 
+const restricted = require("./api/auth/authenticate-middleware");
 const indexRouter = require("./bin");
 const authRouter = require("./api/auth/auth-router");
 const usersRouter = require("./api/users/users-router");
@@ -15,9 +16,9 @@ appConfig(app);
 // routers
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
-app.use("/users", usersRouter);
-app.use("/users", relocateRouter);
-app.use("/users", personalRouter);
+app.use("/users", restricted, usersRouter);
+app.use("/users", restricted, relocateRouter);
+app.use("/users", restricted, personalRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
