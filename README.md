@@ -152,7 +152,7 @@ _Response_
 ```
 POST /users/:id/personal
 ```
-> POST personalBudget by user id.  The id here in the post is the user id and will post a new personal budget associated with this user.
+> POST personalBudget by user id.  The id here in the POST is the user id and will post a new personal budget associated with this user.
 
 <br>
 
@@ -175,7 +175,7 @@ POST /users/:id/personal
 ```
 PUT /:userId/personal/:budgetId
 ```
-> PUT request will update a personal budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the userId (id of the user)
+> PUT request will update a personal budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the _userId_ (id of the user)
 
 <br>
 
@@ -190,7 +190,7 @@ _Response_
 ```
 DELETE /:userId/personal/:budgetId
 ```
-> DELETE request will remove a personal budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the userId (id of the user)
+> DELETE request will remove a personal budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the _userId_ (id of the user)
 
 <br>
 
@@ -240,7 +240,7 @@ _Response_
 ```
 POST /users/:id/relocate
 ```
-> POST relocateBudget by user id.  The id here in the post is the user id and will post a new relocation budget associated with this user.
+> POST relocateBudget by user id.  The id here in the POST is the user id and will post a new relocation budget associated with this user.
 
 <br>
 
@@ -265,7 +265,7 @@ POST /users/:id/relocate
 ```
 PUT /:userId/relocate/:budgetId
 ```
-> PUT request will update a relocation budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the userId (id of the user)
+> PUT request will update a relocation budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the _userId_ (id of the user)
 
 <br>
 
@@ -281,7 +281,7 @@ _Response_
 ```
 DELETE /:userId/relocate/:budgetId
 ```
-> DELETE request will remove a relocation budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the userId (id of the user)
+> DELETE request will remove a relocation budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the _userId_ (id of the user)
 
 <br>
 
