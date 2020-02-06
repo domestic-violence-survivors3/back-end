@@ -5,7 +5,6 @@ module.exports = {
   findByUserId,
   add,
   updateById,
-  // update,
   remove
 };
 
@@ -17,7 +16,6 @@ function findById(id) {
 
 function findByUserId(userId) {
   return db("relocateBudget").where({ user_id: userId });
-  // .first();
 }
 
 function add(budget, userId) {
@@ -41,21 +39,6 @@ function updateById(changes, id) {
     .update(changes)
     .then(findById(id));
 }
-
-// function update(changes) {
-//   return db("relocateBudget as pb")
-//     .update({ changes })
-//     .then(ids => {
-//       const id = ids[0];
-
-//       return db("relocateBudget")
-//         .where({ id })
-//         .first()
-//         .then(budgets => {
-//           return budgets;
-//         });
-//     });
-// }
 
 function remove(id) {
   return db("relocateBudget")

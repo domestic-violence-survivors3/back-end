@@ -68,10 +68,10 @@ router.delete("/:userId/personal/:budgetId", (req, res) => {
     if (user.length > 0) {
       if (user) {
         Personal.remove(budgetId)
-          .then(updatedBudget => {
-            if (updatedBudget > 0) {
+          .then(removedBudget => {
+            if (removedBudget > 0) {
               res.status(200).json({
-                updatedBudget,
+                removedBudget,
                 message: `User Id: ${userId} - Personal Budget id: ${budgetId} successfully removed`
               });
             } else {

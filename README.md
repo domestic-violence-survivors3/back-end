@@ -1,3 +1,4 @@
+
 ### BaseURL: https://dvscalculator.herokuapp.com/
 
 # **Table of Contents**
@@ -5,22 +6,26 @@
 2)  User Endpoints
 3)  Personal Budget Endpoints
 4)  Relocation Budget Endpoints
----
+
+<br><br>
 
 # **1 - Authentication**
-
-> Register User
-
-| name     | type   | description                 |
-| -------- | ------ | -------------------------   |
-| username | string | user's name      \*required |
-| password | string | user's password  \*required |
 
 ```
 POST /auth/register
 ```
+> POST will register a new user into the database.
 
-> Response
+<br>
+
+| name     | type   | description                   |
+| -------- | ------ | -------------------------     |
+| username | string | user's name      \*_required_ |
+| password | string | user's password  \*_required_ |
+<br>
+
+
+_Response_
 
 ```
 {
@@ -28,39 +33,45 @@ POST /auth/register
 }
 ```
 
----
+<br>
 
-> Login User
+```
+POST /auth/login
+```
+
+> POST Login will login a user thats already registered in the database.
+
+<br>
 
 
 | name     | type   | description                |
 | -------- | ------ | -------------------------  |
 | username | string | user's name \*required     |
 | password | string | user's password \*required |
+<br>
 
-```
-POST /auth/login
-```
 
-> Response
+_Response_
 
 ```
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...ect",
     "message": "logged in: welcome userName!"
 }
-
 ```
 
-# **2 - Users**
+<br>
 
-> Retrieve the User by the user id and return the user and the personal budget(s) and relocation budget(s) assigned to that user.
+# **2 - Users**
 
 ```
 GET /users/:id
 ```
+> Retrieve the User by the user id and return the user and the personal budget(s) and relocation budget(s) assigned to that user.
 
-### Response
+<br>
+
+_Response_
 
 ```
 {
@@ -102,17 +113,19 @@ GET /users/:id
   ]
 }
 ```
+<br>
 
 # **3 - Personal Budget**
-
-
-
-> Retrieve the personal budget(s) by the user id.
 
 ```
 GET /users/:id/personal
 ```
-### Response
+
+> Retrieve the personal budget(s) by the user id.
+
+<br>
+
+_Response_
 
 ```
 {
@@ -134,11 +147,14 @@ GET /users/:id/personal
 
 ```
 
-## POST personalBudget by ID
+<br>
+
 ```
 POST /users/:id/personal
 ```
+> POST personalBudget by user id.  The id here in the POST is the user id and will post a new personal budget associated with this user.
 
+<br>
 
 | name            | type    | description                                           |
 | --------------- | ------- | ----------------------------------------------------- |
@@ -153,13 +169,49 @@ POST /users/:id/personal
 | other           | integer | Other costs to include    |
 | user_id         | integer | included from req.params  |
 
+
+<br>
+
+```
+PUT /:userId/personal/:budgetId
+```
+> PUT request will update a personal budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the _userId_ (id of the user)
+
+<br>
+
+_Response_
+```
+{
+    "updatedBudget": 1,
+    "message": "User Id: 1 - Personal Budget id: 12 successfully updated"
+}
+```
+
+```
+DELETE /:userId/personal/:budgetId
+```
+> DELETE request will remove a personal budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the _userId_ (id of the user)
+
+<br>
+
+_Response_
+```
+{
+    "removedBudget": 1,
+    "message": "User Id: 3 - Personal Budget id: 13 successfully removed"
+}
+```
+
 # **4 - Relocation Budget**
 
-## GET relocateBudget by ID
 ```
 GET /users/:id/relocate
 ```
-### Response
+> Retrieve the relocation budget(s) by the user id.
+
+<br>
+
+_Response_
 
 ```
 {
@@ -182,11 +234,15 @@ GET /users/:id/relocate
     }
   ]
 }
+```
+<br>
 
 ```
+POST /users/:id/relocate
+```
+> POST relocateBudget by user id.  The id here in the POST is the user id and will post a new relocation budget associated with this user.
 
-## POST relocateBudget by ID
-
+<br>
 
 | name            | type    | description                                           |
 | --------------- | ------- | ----------------------------------------------------- |
@@ -203,3 +259,36 @@ GET /users/:id/relocate
 | incomeLoss      | integer | Any income loss due to relocation        |
 | other           | integer | Other costs to include                   |
 | user_id         | integer | included from req.params  |
+
+<br>
+
+```
+PUT /:userId/relocate/:budgetId
+```
+> PUT request will update a relocation budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the _userId_ (id of the user)
+
+<br>
+
+_Response_
+```
+{
+    "updatedBudget": 1,
+    "message": "User Id: 1 - Relocation Budget id: 8 successfully updated"
+}
+```
+<br>
+
+```
+DELETE /:userId/relocate/:budgetId
+```
+> DELETE request will remove a relocation budget associated with the user id.  The _userId_ is the id of the user and the _budgetId_ is the id of the budget you're updating assigned to the _userId_ (id of the user)
+
+<br>
+
+_Response_
+```
+{
+    "removedBudget": 1,
+    "message": "User Id: 1 - Relocation Budget id: 11 successfully removed"
+}
+```
