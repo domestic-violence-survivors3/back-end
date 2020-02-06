@@ -152,7 +152,7 @@ _Response_
 ```
 POST /users/:id/personal
 ```
-> POST personalBudget by user id.  The id here in the POST is the user id and will post a new personal budget associated with this user.
+> POST personalBudget by user id.  The id here in the POST is the user id and will post a new personal budget associated with this user.  Also each integer has a max value of 5.
 
 <br>
 
@@ -240,7 +240,7 @@ _Response_
 ```
 POST /users/:id/relocate
 ```
-> POST relocateBudget by user id.  The id here in the POST is the user id and will post a new relocation budget associated with this user.
+> POST relocateBudget by user id.  The id here in the POST is the user id and will post a new relocation budget associated with this user.  Also each integer has a max value of 5.
 
 <br>
 
