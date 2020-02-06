@@ -1,7 +1,5 @@
 const express = require("express");
 
-const cors = require("cors");
-
 const createError = require("http-errors");
 const appConfig = require("./api/config/appConfig");
 
@@ -21,7 +19,6 @@ app.use("/auth", authRouter);
 app.use("/users", restricted, usersRouter);
 app.use("/users", restricted, relocateRouter);
 app.use("/users", restricted, personalRouter);
-app.use(cors());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
