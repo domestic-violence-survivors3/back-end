@@ -33,23 +33,13 @@ describe("Users Model", () => {
         });
     });
 
-    // it("Return username", function() {
-    //   return request(app)
-    //     .post("/api/auth/register")
-    //     .send({ username: "Tom Brady", password: "GOAT" })
-    //     .then(res => {
-    //       const { username } = res.body;
-    //       expect(username).toMatch("Tom Brady");
-    //     });
-    // });
-
-    // it("User not in database", async () => {
-    //   await request(app)
-    //     .post("/api/auth/login")
-    //     .send({ username: "Grinch", password: "StoleXmas" })
-    //     .then(res => {
-    //       expect(res.status).toBe(401);
-    //     });
-    // });
+    it("User not in database", async () => {
+      await request(app)
+        .post("/api/auth/login")
+        .send({ username: "Grinch", password: "StoleXmas" })
+        .then(res => {
+          expect(res.status).toBe(404);
+        });
+    });
   });
 });
