@@ -9,12 +9,12 @@ describe("test enviroment", () => {
   });
 });
 
-describe("Users Model", () => {
-  beforeEach(async () => {
+describe("authenticate routes", () => {
+  beforeAll(async () => {
     await db("users").truncate();
   });
 
-  describe("Registering new user", () => {
+  describe("registering new user", () => {
     it("registers user", async () => {
       request(app)
         .post("/auth/register")
@@ -24,7 +24,7 @@ describe("Users Model", () => {
         });
     });
 
-    it("User is in Database", async () => {
+    it("user is in Database", async () => {
       await request(app)
         .post("/auth/login")
         .send({ username: "Jack Ryan", password: "CIA" })
@@ -33,7 +33,7 @@ describe("Users Model", () => {
         });
     });
 
-    it("User not in database", async () => {
+    it("user not in database", async () => {
       await request(app)
         .post("/api/auth/login")
         .send({ username: "Grinch", password: "StoleXmas" })
