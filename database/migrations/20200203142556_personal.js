@@ -10,6 +10,9 @@ exports.up = function(knex) {
     tbl.integer("carLoans", 5);
     tbl.integer("personalLoans", 5);
     tbl.integer("other", 5);
+    tbl.integer("totalP");
+  
+
     tbl
       .integer("user_id")
       .unsigned()

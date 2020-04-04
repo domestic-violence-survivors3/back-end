@@ -14,6 +14,7 @@ exports.up = function(knex) {
     tbl.integer("mentalHealth", 5);
     tbl.integer("incomeLoss", 5);
     tbl.integer("other", 5);
+    tbl.integer("relocateTotal");
     tbl
       .integer("user_id")
       .unsigned()
