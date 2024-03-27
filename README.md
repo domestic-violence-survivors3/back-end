@@ -14,7 +14,7 @@
 ```
 POST /auth/register
 ```
-> POST will register a new user into the database.
+> POST will register a new user into the database
 
 <br>
 
